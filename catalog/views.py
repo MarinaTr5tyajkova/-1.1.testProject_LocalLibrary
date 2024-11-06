@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from catalog.models import MyModelName  # Импортируем модель
-from .models import Book  # Импортируем модель Book
+from .models import Book, Author, BookInstance, Genre  # Импортируем модель Book
 
 def create_and_modify_record(request):
     # Создание новой записи
@@ -53,4 +53,28 @@ def fiction_book_list(request):
         'number_fiction_books': number_fiction_books,
     })
 
+def index(request):
+    """
+    Функция отображения для домашней страницы сайта.
+    """
+    # Генерация "количеств" некоторых главных объектов
+    num_books=Book.objects.all().count()
+    num_instances=BookInstance.objects.all().count()
+    # Доступные книги (статус = 'a')
+    num_instances_available=BookInstance.objects.filter(status__exact='a').count()
+    num_authors=Author.objects.count()  # Метод 'all()' применён по умолчанию.
+
+    # Отрисовка HTML-шаблона base.html с данными внутри
+    # переменной контекста context
+
+    return render(
+        request,
+        'index.html',
+        context={
+            'num_books': num_books,
+            'num_instances': num_instances,
+            'num_instances_available': num_instances_available,
+            'num_authors': num_authors,
+        }
+    )
 

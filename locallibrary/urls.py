@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')), # Включение маршрутов приложения catalog
     path('', RedirectView.as_view(url='/catalog/', permanent=True)), # Перенаправление с корневого URL на /catalog/
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  # Добавление статических файлов
