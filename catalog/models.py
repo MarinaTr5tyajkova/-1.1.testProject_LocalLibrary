@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 import uuid  # Импортируем модуль uuid
 
+
 class MyModelName(models.Model):
     """Типичный класс модели, производный от класса Model."""
     my_field_name = models.CharField(max_length=20, help_text='Введите описание поля')
@@ -31,6 +32,9 @@ class Author(models.Model):
     def __str__(self):
         """Строка для представления объекта автора."""
         return '%s, %s' % (self.last_name, self.first_name)
+
+    class Meta:
+        ordering = ['last_name']  # Сортировка по фамилии
 
 class Genre(models.Model):
     """Модель для представления жанра книги."""
@@ -74,3 +78,4 @@ class BookInstance(models.Model):
     def __str__(self):
         """Строка для представления экземпляра книги."""
         return '%s (%s)' % (self.id, self.book.title)
+

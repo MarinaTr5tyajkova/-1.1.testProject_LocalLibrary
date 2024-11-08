@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Book List</h1>
+    <ul>
+        {% for book in my_book_list %}
+            <li><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a></li>
+        {% empty %}
+            <li>There are no books in the library.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+
+
