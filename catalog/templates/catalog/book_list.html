@@ -1,7 +1,6 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<<<<<<< HEAD
     <h1>Список книг</h1>
 
     {% if book_list %}
@@ -17,18 +16,3 @@
       <p>Пока в библиотеке нет книг.</p>
     {% endif %}
 {% endblock %}
-=======
-    <h1>Book List</h1>
-    <ul>
-        {% for book in my_book_list %}
-            <li><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a></li>
-        {% empty %}
-            <li>There are no books in the library.</li>
-        {% endfor %}
-    </ul>
-{% endblock %}
-
-
-
-
->>>>>>> origin/main

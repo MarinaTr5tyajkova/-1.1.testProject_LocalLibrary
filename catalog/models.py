@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from datetime import date
 
 
-<<<<<<< HEAD
 class BookInstance(models.Model):
     """
     Model representing a specific copy of a book (i.e. that can be borrowed from the library).
@@ -30,11 +29,6 @@ class BookInstance(models.Model):
     )
 
     status = models.CharField(max_length=1, choices=LOAN_STATUS, blank=True, default='п', help_text='Доступность книги')
-=======
-class MyModelName(models.Model):
-    """Типичный класс модели, производный от класса Model."""
-    my_field_name = models.CharField(max_length=20, help_text='Введите описание поля')
->>>>>>> origin/main
 
     class Meta:
         ordering = ["due_back"]
@@ -109,62 +103,9 @@ class Author(models.Model):
         """
         return reverse('author-detail', args=[str(self.id)])
 
-<<<<<<< HEAD
 
     def __str__(self):
         """
         String for representing the Model object.
         """
         return f'{self.last_name} {self.first_name}'
-=======
-    def __str__(self):
-        """Строка для представления объекта автора."""
-        return '%s, %s' % (self.last_name, self.first_name)
-
-    class Meta:
-        ordering = ['last_name']  # Сортировка по фамилии
-
-class Genre(models.Model):
-    """Модель для представления жанра книги."""
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        """Строка для представления объекта жанра."""
-        return self.name
-
-class Book(models.Model):
-    """Модель для представления книги."""
-    title = models.CharField(max_length=200)
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
-    summary = models.TextField(max_length=1000)
-    isbn = models.CharField('ISBN', max_length=13)
-    genre = models.ManyToManyField(Genre)
-
-    def __str__(self):
-        """Строка для представления объекта книги."""
-        return self.title
-
-class BookInstance(models.Model):
-    """Модель для представления конкретного экземпляра книги."""
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
-    imprint = models.CharField(max_length=200)
-    due_back = models.DateField(null=True, blank=True)
-
-    LOAN_STATUS = (
-        ('m', 'Maintenance'),
-        ('o', 'On loan'),
-        ('a', 'Available'),
-        ('r', 'Reserved'),
-    )
-
-    status = models.CharField(max_length=1, choices=LOAN_STATUS, blank=True, default='m')
-
-    class Meta:
-        ordering = ["due_back"]
-
-    def __str__(self):
-        """Строка для представления экземпляра книги."""
-        return '%s (%s)' % (self.id, self.book.title)
-
->>>>>>> origin/main

@@ -3,26 +3,15 @@
 {% block content %}
 
 {% if form.errors %}
-<<<<<<< HEAD
   <p>Ваши имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
-=======
-  <p>Your username and password didn't match. Please try again.</p>
->>>>>>> origin/main
 {% endif %}
 
 {% if next %}
   {% if user.is_authenticated %}
-<<<<<<< HEAD
     <p>Ваша учетная запись не имеет доступа к этой странице. Чтобы продолжить,
 пожалуйста, войдите в систему с учетной записью, у которой есть доступ.</p>
   {% else %}
     <p>Пожалуйста, войдите в систему, чтобы увидеть эту страницу.</p>
-=======
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-  {% else %}
-    <p>Please login to see this page.</p>
->>>>>>> origin/main
   {% endif %}
 {% endif %}
 
@@ -48,8 +37,4 @@
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
-<<<<<<< HEAD
 {% endblock %}
-=======
-{% endblock %}
->>>>>>> origin/main

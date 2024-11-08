@@ -1,7 +1,6 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<<<<<<< HEAD
   <h1>Автор: {{ author.last_name }} {{ author.first_name }}</h1>
   <p>{{ author.date_of_birth }} {% if author.date_of_death %} - {{ author.date_of_death }}{% endif %}</p>
   <hr>
@@ -19,21 +18,4 @@
     {% endfor %}
   </dl>
 
-=======
-    <h1>Детальная информация об авторе</h1>
-    <p><strong>Имя:</strong> {{ author.first_name }} {{ author.last_name }}</p>
-    <p><strong>Дата рождения:</strong> {{ author.date_of_birth }}</p>
-    <p><strong>Дата смерти:</strong> {{ author.date_of_death }}</p>
-
-    <h2>Книги автора:</h2>
-    <ul>
-        {% for book in books %}
-            <li><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a></li>
-        {% empty %}
-            <li>Книги не найдены.</li>
-        {% endfor %}
-    </ul>
-
-    <p><a href="{% url 'author-list' %}">Назад к списку авторов</a></p>
->>>>>>> origin/main
 {% endblock %}
