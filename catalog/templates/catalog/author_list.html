@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<<<<<<< HEAD
     <h1>Список Авторов</h1>
 
     {% if author_list %}
@@ -15,4 +16,16 @@
     {% else %}
       <p>Авторы отсутствуют.</p>
     {% endif %}
+=======
+    <h1>Список авторов</h1>
+    <ul>
+        {% for author in author_list %}
+            <li>
+                <a href="{% url 'author-detail' author.pk %}">{{ author }}</a>
+            </li>
+        {% empty %}
+            <li>Авторы не найдены.</li>
+        {% endfor %}
+    </ul>
+>>>>>>> origin/main
 {% endblock %}
