@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>All Borrowed books</h1>
+
+    {% if bookinstance_list %}
+    <table class="mt-4 h5 display-table">
+        <tr class="text-secondary">
+            <td>Название</td>
+            <td>Дата возврата</td>
+            <td>Заёмщик</td>
+        </tr>
+      {% for bookinst in bookinstance_list %}
+        <tr>
+            <td><a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a></td>
+            <td><span class="{% if bookinst.is_overdue %}text-danger{% endif %}"> {{ bookinst.due_back_format }}</span></td>
+            <td>{{bookinst.borrower}}</td>
+            {% if perms.catalog.can_mark_returned %}
+                <td><a href="{% url 'renew-book-librarian' bookinst.id %}">Edit</a></td>
+            {% endif %}
+        </tr>
+      {% endfor %}
+    </table>
+
+    {% else %}
+      <p class="h5">There are no rented books</p>
+    {% endif %}
+{% endblock %}

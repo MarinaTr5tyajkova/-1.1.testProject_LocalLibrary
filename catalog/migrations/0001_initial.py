@@ -31,16 +31,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='MyModelName',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('my_field_name', models.CharField(help_text='Введите описание поля', max_length=20, verbose_name='BetterName')),
-            ],
-            options={
-                'ordering': ['-my_field_name'],
-            },
-        ),
-        migrations.CreateModel(
             name='Book',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),

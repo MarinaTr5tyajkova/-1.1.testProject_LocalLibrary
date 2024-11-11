@@ -3,15 +3,15 @@
 {% block content %}
 
 {% if form.errors %}
-  <p>Ваши имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
+  <p>Your username and password did not match. Please try again.</p>
 {% endif %}
 
 {% if next %}
   {% if user.is_authenticated %}
-    <p>Ваша учетная запись не имеет доступа к этой странице. Чтобы продолжить,
-пожалуйста, войдите в систему с учетной записью, у которой есть доступ.</p>
+    <p>Your account does not have access to this page. To continue,
+please log in with an account that has access.</p>
   {% else %}
-    <p>Пожалуйста, войдите в систему, чтобы увидеть эту страницу.</p>
+    <p>Please log in to see this page.</p>
   {% endif %}
 {% endif %}
 
