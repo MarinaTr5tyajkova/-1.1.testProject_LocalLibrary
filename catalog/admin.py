@@ -21,14 +21,16 @@ class AuthorAdmin(admin.ModelAdmin):
 
 admin.site.register(Author, AuthorAdmin)
 
+# Для отображения экземпляров книг (BookInstance) в виде встроенной таблицы на странице редактирования книги (Book).
 class BooksInstanceInline(admin.TabularInline):
     model = BookInstance
-
+# Отвечает за администрирование модели Book. Он определяет, как будут отображаться записи книг в административной панели
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'display_genre')
     inlines = [BooksInstanceInline]
 
+# Управляет моделью BookInstance, которая представляет собой конкретные экземпляры книги (например, конкретные физические копии)
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
     list_display = ('book', 'status', 'borrower', 'due_back', 'id')
